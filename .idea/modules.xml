@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/SpringLite.iml" filepath="$PROJECT_DIR$/.idea/SpringLite.iml" />
-      <module fileurl="file://$PROJECT_DIR$/springlist-01/springlist-01.iml" filepath="$PROJECT_DIR$/springlist-01/springlist-01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springlite-01/springlite-01.iml" filepath="$PROJECT_DIR$/springlite-01/springlite-01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springlite-02/springlite-02.iml" filepath="$PROJECT_DIR$/springlite-02/springlite-02.iml" />
     </modules>
   </component>
 </project>

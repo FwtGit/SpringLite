@@ -6,12 +6,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="springlist-01" />
+        <module name="springlite-02" />
+      </profile>
+      <profile name="Annotation profile for SpringLite" enabled="true">
+        <sourceOutputDir name="../springlist-01/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../springlist-01/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springlite-01" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="springlist-01" target="1.5" />
-      <module name="SpringLite" target="1.5" />
+    <bytecodeTargetLevel target="8">
+      <module name="SpringLite" target="8" />
+      <module name="springlite-01" target="8" />
+      <module name="springlite-02" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
