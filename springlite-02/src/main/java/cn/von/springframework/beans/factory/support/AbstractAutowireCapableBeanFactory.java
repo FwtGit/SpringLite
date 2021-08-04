@@ -1,11 +1,14 @@
 package cn.von.springframework.beans.factory.support;
 
+import cn.von.PropertyValues;
 import cn.von.springframework.beans.BeansException;
+import cn.von.springframework.beans.PropertyValue;
 import cn.von.springframework.beans.factory.config.BeanDefinition;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.util.*;
+import cn.hutool.core.bean.BeanUtil;
 import java.util.concurrent.TimeUnit;
 
  
@@ -18,12 +21,35 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         Object bean = null;
         try {
             bean = createBeanInstance(beanDefinition, beanName, args);
+            //属性填充
+            applyPropertyValues(beanName, bean, beanDefinition);
         } catch (Exception e) {
             throw new BeansException("Instantiation of bean failed", e);
         }
 
         addSingleton(beanName, bean);
         return bean;
+    }
+
+    private void applyPropertyValues(String beanName, Object bean, BeanDefinition beanDefinition) {
+        try {
+            PropertyValues propertyValues = beanDefinition.getPropertyValues();
+            for (PropertyValue propertyValue : propertyValues.getPropertyValues()) {
+
+                String name = propertyValue.getName();
+                Object value = propertyValue.getValue();
+
+                if (value instanceof BeanReference) {
+                    // A 依赖 B，获取 B 的实例化
+                    BeanReference beanReference = (BeanReference) value;
+                    value = getBean(beanReference.getBeanName());
+                }
+                // 属性填充
+                BeanUtil.setFieldValue(bean, name, value);
+            }
+        } catch (Exception e) {
+            throw new BeansException("Error setting property values：" + beanName);
+        }
     }
 
     protected Object createBeanInstance(BeanDefinition beanDefinition, String beanName, Object[] args) {
