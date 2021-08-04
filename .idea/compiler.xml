@@ -2,11 +2,12 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="springlite-02" />
+        <module name="SpringLite" />
       </profile>
       <profile name="Annotation profile for SpringLite" enabled="true">
         <sourceOutputDir name="../springlist-01/target/generated-sources/annotations" />
@@ -16,9 +17,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
-      <module name="SpringLite" target="8" />
+      <module name="SpringLite" target="1.8" />
+      <module name="springlite" target="1.8" />
       <module name="springlite-01" target="8" />
-      <module name="springlite-02" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
